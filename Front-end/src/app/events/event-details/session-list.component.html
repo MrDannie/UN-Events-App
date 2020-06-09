@@ -1,0 +1,65 @@
+<div class="row" *ngFor="let session of visibleSessions">
+  <div class="col-md-1">
+    <div *ngIf="auth.isAuthenticated()">
+      <upvote
+        (vote)="toggleVote(session)"
+        [count]="session.voters.length"
+        [voted]="userHasVoted(session)"
+      >
+      </upvote>
+    </div>
+  </div>
+  <div class="col-md-10">
+    <collapsible-well>
+      <div well-title>
+        {{ session.name }}
+        <i
+          *ngIf="session.voters.length > 3"
+          class="glyphicon glyphicon-fire"
+          style="color: red;"
+        ></i>
+        <span style="float: right;"
+          ><i
+            style="margin-left: 20px;"
+            class="fa fa-angle-double-up"
+            style="font-size: 24px;"
+          ></i>
+          <i
+            style="margin-left: 20px;"
+            class="fa fa-angle-double-down"
+            style="font-size: 24px;"
+          ></i
+        ></span>
+      </div>
+      <div well-body>
+        <h6>Organiser(s): {{ session.presenter }}</h6>
+        <span>Duration: {{ session.duration | duration }}</span
+        ><br />
+        <span>Level: {{ session.level }}</span>
+        <p>{{ session.abstract }}</p>
+      </div>
+      <div
+        style="z-index: 1000; background-color: #3b3333; margin-bottom: 20px;"
+        footer
+      >
+      <div class="details-action_session">
+         <div (click)=onEditSessionClick(session._id)><a  class="action-icons_session"
+                ><i
+                
+                  title="Edit session"
+                  class="glyphicon glyphicon-edit edit-icon white"
+                ></i
+              ></a></div>
+        <div (click)="deleteHandler(session._id)"> <a class="action-icons_session" 
+                ><i
+                
+                  title="Delete session"
+                  class="glyphicon glyphicon-trash trash-icon white"
+                ></i
+              ></a></div>
+      </div>
+       
+      </div>
+    </collapsible-well>
+  </div>
+</div>

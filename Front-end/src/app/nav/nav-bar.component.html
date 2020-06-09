@@ -1,0 +1,122 @@
+<nav class="navigation">
+  <div class="logo">
+    <a [routerLink]="['/events']">UN Events</a>
+  </div>
+
+  <!-- Place The Other Menu Items Here -->
+
+  <ul [ngClass]="getStyling()" class="menu">
+    <li class="menu-item">
+      <a (click) = "closeMenu($event)"
+        [routerLink]="['/events']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >All Events</a
+      >
+    </li>
+    <li class="menu-item">
+      <a (click) = "closeMenu($event)" [routerLink]="['events/new']" routerLinkActive="active"
+        >Create Event</a
+      >
+    </li>
+    <li style="display: none;" class="menu-item">
+      <a>Events</a>
+    </li>
+  </ul>
+  <div>
+    <form class="searchForms" (ngSubmit)="searchSessions(searchTerm)">
+      <input
+        [(ngModel)]="searchTerm"
+        name="searchTerm"
+        type="text"
+        placeholder="Search Sessions"
+      />
+
+      <button class="btn" modal-trigger="searchResults">
+        Search
+      </button>
+    </form>
+  </div>
+  <div class="login-btn">
+    <a *ngIf="!auth.isAuthenticated()" [routerLink]="['user/login']">Login</a>
+    <a *ngIf="auth.isAuthenticated()"
+      >Welcome {{ auth.currentUser.firstName }}</a
+    >
+  </div>
+
+  <button (click)="openMenu()" id="hamburger">
+    <img
+      [ngClass]="{ hide: open === true }"
+      class="hamburger"
+      src="/assets/images/icon-hamburger.svg"
+      alt="menu"
+    />
+    <img
+      [ngClass]="{ show: open === true }"
+      class="close-times"
+      src="/assets/images/icon-close.svg"
+      alt="icon-close"
+    />
+  </button>
+</nav>
+
+<!-- <div id="navigation" class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" [routerLink] = "['/events']" >UN Events</a>
+    </div>
+
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a [routerLink] = "['/events']" routerLinkActive = "active" [routerLinkActiveOptions]="{exact:true}">All Events</a>
+        </li>
+        <li><a [routerLink] = "['events/new']" routerLinkActive="active" >Create Event</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
+            Events
+            <span class="caret"></span>
+          </a>
+          <ul  class="dropdown-menu">
+            <li *ngFor="let event of events" >
+              <a [routerLink] = "['/events', event.id]">{{event.name}}</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="navbar-header navbar-right">
+        <ul class="nav navbar-nav">
+          <li>
+            <a *ngIf="!auth.isAuthenticated()" [routerLink]="['user/login']">Login</a>
+            <a *ngIf="auth.isAuthenticated()" 
+            >Welcome {{auth.currentUser.firstName}}</a>
+          </li>
+        </ul>
+      </div>
+      <form class="searchBar" id="searchForm" (ngSubmit)="searchSessions(searchTerm)"  class="navbar-form navbar-right"  >
+        <div class="form-group">
+          <input [(ngModel)]="searchTerm" name="searchTerm" type="text" class="form-control" placeholder="Search Sessions" >
+        </div>
+        <button class="btn btn-default" modal-trigger="searchResults">
+          Search
+        </button>
+      </form>
+    </div>
+  </div>
+</div> -->
+
+<simple-modal
+  closeOnBodyClick="true"
+  elementId="searchResults"
+  title="Matching Sessions"
+>
+  <div class="list-group">
+    <a
+      class="list-group-item"
+      *ngFor="let session of foundSessions"
+      [routerLink]="['/events', session.eventId]"
+    >
+      {{ session.name }}
+    </a>
+  </div>
+</simple-modal>

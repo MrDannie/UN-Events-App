@@ -1,0 +1,175 @@
+.nav.navbar-nav {
+  font-size: 15px;
+}
+
+#searchForm {
+  margin-right: 100px;
+}
+
+li > a.active {
+  color: #f97924;
+}
+.navbar-brand {
+  font-weight: bold;
+  font-family: Franklin;
+}
+/* For DeskTop Display */
+.navigation {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.menu {
+  display: flex;
+  list-style-type: none;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  margin-right: 30px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  padding: 5px 15px;
+}
+
+a:hover,
+a:focus {
+  background-color: #796868;
+}
+
+input {
+  padding: 8px;
+}
+
+.searchForms {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hamburger {
+  display: none;
+}
+
+#hamburger {
+  display: none;
+}
+
+.container {
+    padding-top: 10px;
+  }
+/* DeskTop Display Ends Here  */
+
+@media (max-width: 720px) {
+  .container {
+    padding-top: 0px;
+  }
+  .navigation {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #796868;
+    height: 50vh;
+    width: 70%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.5s;
+    padding: 70px 10px 10px;
+  }
+
+  .menu-item::after {
+    content: "";
+    left: 0;
+    height: 1px;
+    width: 100%;
+    color: white;
+  }
+
+  .menu-item {
+    margin-bottom: 100px;
+  }
+  #hamburger {
+    display: block;
+  }
+
+  .close-times {
+    display: none;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  .show {
+    display: block;
+  }
+
+  .open {
+    transform: translateX(0);
+  }
+
+  .menu-item a {
+    color: white;
+  }
+
+  
+  .searchForms {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  input {
+    width: 112px;
+    padding: 4px 8px;
+  }
+
+  button {
+    padding: 4px 8px;
+  }
+
+  .hamburger {
+    display: block;
+    padding: 0;
+  }
+  .close {
+    display: none;
+  }
+  .navigation .hamburger.show .open {
+    display: inline-block;
+  }
+  .navigation .hamburger.show .close {
+    display: block;
+  }
+
+  /* NavBar Styling  */
+}
+
+@media (max-width: 1200px) {
+  #searchForm {
+    display: none;
+    justify-content: center;
+    align-items: center;
+  }
+}

@@ -1,0 +1,119 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+
+.hoverwell:hover {
+  background-color: #3d3a3a;
+}
+
+
+
+.pointable {
+  cursor: pointer;
+}
+
+#body-tag {
+  background-color: #242222;
+}
+
+.thumbnail {
+  background-color: #3b3333;
+}
+
+.navigation {
+  background-color: #3b3333;
+}
+
+.navbar-default {
+  background-color: #413e3e;
+}
+
+#session-box {
+  background-color: #3b3333;
+}
+
+.well {
+  margin-bottom: 0px;
+}
+
+/* #body-tag{
+ background-color: rgb(14, 13, 13);
+}
+
+.thumbnail{
+ background-color: #3b3333;;
+} */
+
+button {
+  color: #555;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.toast-success {
+  background-color: #51a351;
+}
+.toast-error {
+  background-color: #bd362f;
+}
+.toast-info {
+  background-color: #2f96b4;
+}
+.toast-warning {
+  background-color: #f89406;
+}
+
+.thumbnail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.action-icons {
+  color: white;
+  z-index: 1000;
+  font-size: 23px;
+  padding: 20px 20px 5px 0;
+}
+
+.action-icons_session {
+  color: white;
+  font-size: 25px;
+  z-index: 1000;
+}
+.action-icons:hover,
+.action-icons:focus {
+  color: #df691a;
+  cursor: pointer;
+
+}
+
+.event-details {
+  margin-bottom: 1.3em;
+  cursor: pointer;
+}
+
+.details-action {
+  display: flex;
+ 
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+.details-action_session {
+   display: flex;
+ 
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 20px;
+  margin-bottom: 10px;
+}
+
+
+  .searchBar {
+    display: none;
+  }
+

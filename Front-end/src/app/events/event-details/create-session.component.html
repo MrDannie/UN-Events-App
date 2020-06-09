@@ -1,0 +1,163 @@
+<div class="col-md-12">
+  <h3>Create Session</h3>
+</div>
+<div class="col-md-6">
+  <form
+    #newSessionForm="ngForm"
+    (ngSubmit)="saveSession(newSessionForm.value)"
+    autocomplete="off"
+    novalidate
+  >
+    <div
+      class="form-group"
+      [ngClass]="{
+        error:
+          newSessionForm.controls.name?.invalid &&
+          newSessionForm.controls.name?.touched
+      }"
+    >
+      <label for="sessionName">Session Name:</label>
+      <em
+        *ngIf="
+          newSessionForm.controls.name?.invalid &&
+          newSessionForm.controls.name?.touched
+        "
+        >Required</em
+      >
+      <input
+        name="name"
+        type="text"
+        class="form-control"
+        [(ngModel)]="recievedSessionToEdit.name"
+        #name="ngModel"
+        placeholder="session name..."
+      />
+    </div>
+    <div
+      class="form-group"
+      [ngClass]="{
+        error:
+          newSessionForm.controls.presenter?.invalid &&
+          newSessionForm.controls.presenter?.touched
+      }"
+    >
+      <label for="eventDate">Host:</label>
+      <em
+        *ngIf="
+          newSessionForm.controls.presenter?.invalid &&
+          newSessionForm.controls.presenter?.touched
+        "
+        >Required</em
+      >
+      <input
+        name="presenter"
+        id="presenter"
+        type="text"
+        class="form-control"
+        placeholder="Host..."
+        [(ngModel)]="recievedSessionToEdit.presenter"
+      />
+    </div>
+    <div
+      class="form-group"
+      [ngClass]="{
+        error:
+          newSessionForm.controls.duration?.invalid &&
+          newSessionForm.controls.duration?.touched
+      }"
+    >
+      <label for="duration">Duration:</label>
+      <em
+        *ngIf="
+          newSessionForm.controls.duration?.invalid &&
+          newSessionForm.controls.duration?.touched
+        "
+        >Required</em
+      >
+      <select
+        name="duration"
+        class="form-control"
+        [(ngModel)]="recievedSessionToEdit.duration"
+      >
+        <option value="">select duration...</option>
+        <option value="1">Half Hour</option>
+        <option value="2">1 Hour</option>
+        <option value="3">Half Day</option>
+        <option value="4">Full Day</option>
+      </select>
+    </div>
+    <div
+      class="form-group"
+      [ngClass]="{
+        error:
+          newSessionForm.controls.level?.invalid &&
+          newSessionForm.controls.level?.touched
+      }"
+    >
+      <label for="level">Level:</label>
+      <em
+        *ngIf="
+          newSessionForm.controls.level?.invalid &&
+          newSessionForm.controls.level?.touched
+        "
+        >Required</em
+      >
+      <select
+        name="level"
+        class="form-control"
+        [(ngModel)]="recievedSessionToEdit.level"
+      >
+        <option value="">Select level...</option>
+        <option value="Beginner">Beginner</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Advanced">Advanced</option>
+      </select>
+    </div>
+
+    <div
+      class="form-group"
+      [ngClass]="{
+        error:
+          newSessionForm.controls.abstract?.invalid &&
+          newSessionForm.controls.abstract?.touched
+      }"
+    >
+      <label for="abstract">Abstract:</label>
+      <em
+        *ngIf="
+          newSessionForm.controls.abstract?.invalid &&
+          newSessionForm.controls.abstract?.touched &&
+          newSessionForm.controls.abstract?.errors.required
+        "
+        >Required</em
+      >
+      <em
+        *ngIf="
+          newSessionForm.controls.abstract?.invalid &&
+          newSessionForm.controls.abstract?.touched
+        "
+        >must not be above 400 characters</em
+      >
+      <textarea
+        name="abstract"
+        id="abstract"
+        rows="3"
+        class="form-control"
+        placeholder="abstract..."
+        [(ngModel)]="recievedSessionToEdit.abstract"
+      ></textarea>
+    </div>
+    <div style="margin-bottom: 15px;">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="newSessionForm.invalid"
+      >
+        Save
+      </button>
+      <button type="button" class="btn btn-default" (click)="cancel()">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,123 @@
+<h1>Edit Event</h1>
+<hr />
+<div class="col-md-6">
+  <form
+    #editEventForm="ngForm"
+    (ngSubmit)="updateEvent(editEventForm.value)"
+    autocomplete="off"
+    novalidate
+  >
+    <div
+      class="form-group"
+      [ngClass]="{
+        error:
+          editEventForm.controls.name?.invalid &&
+          editEventForm.controls.name?.touched
+      }"
+    >
+      <label for="eventName">Event Name:</label>
+      <em
+        *ngIf="
+          editEventForm.controls.name?.invalid &&
+          editEventForm.controls.name?.touched
+        "
+        >Required</em
+      >
+      <input
+        [(ngModel)]="event.name"
+        name="name"
+        required
+        id="name"
+        type="text"
+        class="form-control"
+        placeholder="Name of your event..."
+      />
+    </div>
+
+    <div>
+      <label for="eventName">Event Date:</label>
+      <input
+        [(ngModel)]="event.date"
+        name="date"
+        required
+        id="date"
+        type="text"
+        class="form-control"
+        placeholder="format (mm/dd/yyyy)..."
+      />
+    </div>
+    <div>
+      <label for="eventName">Event Time:</label>
+      <input
+        [(ngModel)]="event.time"
+        name="time"
+        required
+        id="time"
+        type="text"
+        class="form-control"
+        placeholder="Time..."
+      />
+    </div>
+    <div>
+      <label for="eventName">Event Budget:</label>
+      <input
+        [(ngModel)]="event.budget"
+        name="budget"
+        required
+        id="budget"
+        type="text"
+        class="form-control"
+        placeholder="Budget..."
+      />
+    </div>
+
+    <div ngModelGroup="location" style="padding-bottom: 10px;">
+      <div class="form-group">
+        <label for="address">Event Location:</label>
+        <input
+          [(ngModel)]="event.location.address"
+          name="address"
+          id="address"
+          type="text"
+          class="form-control"
+          placeholder="Address of event..."
+        />
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <label for="address">Event City:</label>
+          <input
+            [(ngModel)]="event.location.city"
+            name="city"
+            id="city"
+            type="text"
+            class="form-control"
+            placeholder="City..."
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="address">Event Country:</label>
+          <input
+            [(ngModel)]="event.location.country"
+            name="country"
+            id="country"
+            type="text"
+            class="form-control"
+            placeholder="Country..."
+          />
+        </div>
+      </div>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">Update</button>
+      <button
+        type="button"
+        [disabled]="editEventForm.invalid"
+        class="btn btn-default"
+        (click)="cancel()"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>
